@@ -15,6 +15,7 @@ import datetime
 import logging
 import os
 import traceback
+from docx import Document  # Added for docx file creation
 
 # Utility Functions
 # These functions are used throughout the script for data conversion and error handling.
@@ -189,6 +190,35 @@ class MarketDataScraper:
             logging.exception(f'{self.__str__()}.make_soup() - ERROR on {url}', exc_info=traceback.format_exc())
         finally:
             return data
+
+    # Method to export data to file
+    def export_data_to_file(self, data, file_format, file_name):
+        """
+        Exports data to a file in either HTML or docx format.
+        :param data: Data to be exported.
+        :param file_format: Format of the file ('html' or 'docx').
+        :param file_name: Name of the file to be created.
+        """
+        if file_format == 'html':
+            # Export data to HTML using pandas
+            data.to_html(f'{file_name}.html')
+            print(f'Data exported to {file_name}.html successfully.')
+        elif file_format == 'docx':
+            # Export data to docx using python-docx
+            doc = Document()
+            doc.add_heading('Data Export', 0)
+            table = doc.add_table(rows=1, cols=len(data.columns))
+            hdr_cells = table.rows[0].cells
+            for i, column in enumerate(data.columns):
+                hdr_cells[i].text = str(column)
+            for index, row in data.iterrows():
+                row_cells = table.add_row().cells
+                for i, value in enumerate(row):
+                    row_cells[i].text = str(value)
+            doc.save(f'{file_name}.docx')
+            print(f'Data exported to {file_name}.docx successfully.')
+        else:
+            print('Unsupported file format. Please choose either "html" or "docx".')
 
     # Unusual Options Volume Data
     # Methods to scrape unusual options volume data from MarketBeat.

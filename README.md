@@ -19,3 +19,18 @@ The necessary libraries for running the `market_data_scraper.py` script are list
 - beautifulsoup4
 - requests
 - lxml
+
+### Exporting Data
+
+To export the scraped data to either HTML or docx format, use the `export_data.py` script. This script utilizes the `export_data_to_file` method from the `MarketDataScraper` class to format and save the data in the desired format.
+
+#### Usage
+
+1. Ensure you have `python-docx` installed, as listed in `requirements.txt`.
+2. Run the script with the following command, specifying the output format (`html` or `docx`) and the output file name:
+
+```bash
+python export_data.py --format html --output example_output
+```
+
+This will export the data to an HTML file named `example_output.html`. For a docx file, replace `html` with `docx` in the command.
