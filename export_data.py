@@ -9,7 +9,7 @@ def export_data(format, filename):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Export market data to a file.")
-    parser.add_argument("-f", "--format", help="The format of the export file (html or docx)", required=True)
+    parser.add_argument("-f", "--format", help="The format of the export file (html, docx, or json)", required=True)
     parser.add_argument("-o", "--output", help="The name of the output file", required=True)
     args = parser.parse_args()
 
