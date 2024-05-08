@@ -54,18 +54,18 @@ This will start the data scraping process, and the output will depend on the spe
 
 ### Exporting Data
 
-To export the scraped data to either HTML or docx format, use the `export_data.py` script. This script utilizes the `export_data_to_file` method from the `MarketDataScraper` class to format and save the data in the desired format.
+To export the scraped data to either HTML, docx, or the newly supported JSON format, use the `export_data.py` script. This script utilizes the `export_data_to_file` method from the `MarketDataScraper` class to format and save the data in the desired format. Additionally, structured error logging has been implemented to enhance error tracking during the data export process.
 
 #### Usage
 
 1. Ensure you have `python-docx` installed, as listed in `requirements.txt`, for docx file exports.
-2. Run the script with the following command, specifying the output format (`html` or `docx`) and the output file name:
+2. Run the script with the following command, specifying the output format (`html`, `docx`, or `json`) and the output file name:
 
 ```bash
-python export_data.py --format html --output example_output
+python export_data.py --format json --output example_output
 ```
 
-This will export the data to an HTML file named `example_output.html`. For a docx file, replace `html` with `docx` in the command.
+This will export the data to a JSON file named `example_output.json`. For HTML or docx files, replace `json` with `html` or `docx` in the command.
 
 ## Disclaimer
 
