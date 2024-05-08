@@ -34,3 +34,7 @@ python export_data.py --format html --output example_output
 ```
 
 This will export the data to an HTML file named `example_output.html`. For a docx file, replace `html` with `docx` in the command.
+
+## Disclaimer
+
+This project is for educational purposes only and involves no economic activity. It should not be used for commercial purposes.
